@@ -5,7 +5,7 @@
 
 ## Descrição
 
-Descreva brevemente o problema abordado, o objetivo do projeto e suas principais funcionalidades.
+Ferramenta para automatizar a implantação de placas de sinalização vertical e a geração de suas respectivas legendas em desenhos do AutoCAD, com base nas informações das planilhas de necessidades do Programa BR Legal 2.
 
 ## Instalação
 
@@ -61,9 +61,8 @@ Descreva informações relevantes para desenvolver, modificar ou contribuir com 
 
 **Alunos**
 
-* Nome do aluno (semestre)
-* Nome do aluno (semestre)
-* Nome do aluno (semestre)
+* Gabriel Hubert Silva
+* Nicole Dal Moro Longo
 
 **Professores orientadores**
 
@@ -79,6 +78,3 @@ Liste as normas, livros, artigos, documentação, códigos ou outras fontes util
 Este projeto está distribuído sob a licença MIT. Consulte o arquivo [`LICENSE`](LICENSE).
 
 ```
-
-
-
