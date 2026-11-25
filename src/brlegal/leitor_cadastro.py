@@ -94,17 +94,20 @@ class LeitorCadastroVertical:
             tipo_secao_suporte = TipoSecaoSuporte.NAO_APLICAVEL
             secao_suporte_mm = None
 
+       
         km = float(valor("Km"))
         codigo_placa = str(valor("Código da Placa"))
-        # Para placas do tipo MQ, o código é reconstruído com base na kilometragem da instalação.
+
+        # Para placas do tipo MQ, o código é reconstruído
+        # com base na quilometragem da instalação.
         if codigo_placa.startswith("MQ-"):
             codigo_placa = f"MQ-{round(km)}"
 
-        latitude=latitude,
-        longitude=longitude,
-        x=x,
-        y=y,
+        # Leitura das coordenadas geográficas
+        latitude = float(valor("Latitude"))
+        longitude = float(valor("Longitude"))
 
+        # Conversão para SIRGAS 2000 / UTM 22S
         x, y = ConversorCoordenadas.converter(
             latitude=latitude,
             longitude=longitude,
@@ -119,8 +122,10 @@ class LeitorCadastroVertical:
             lado=lado,
             posicao=posicao,
             km=km,
-            latitude=float(valor("Latitude")),
-            longitude=float(valor("Longitude")),
+            latitude=latitude,
+            longitude=longitude,
+            x=x,
+            y=y,
             detalhamento_pagina=self._inteiro_ou_none(valor("Detalhamento (página)")),
             tipo_suporte=TipoSuporte(valor("Tipo de Suporte")),
             quantidade_suporte=quantidade_suporte,
