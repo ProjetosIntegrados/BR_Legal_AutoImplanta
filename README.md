@@ -17,6 +17,10 @@ Por exemplo:
 poetry install
 ````
 
+```bash
+pyproj>=3.6
+```
+
 ## Uso
 
 Explique como utilizar o projeto e apresente exemplos mínimos de uso.

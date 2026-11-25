@@ -34,6 +34,8 @@ class Placa:
     km: float
     latitude: float
     longitude: float
+    x: float
+    y: float
 
     detalhamento_pagina: Optional[int]
 

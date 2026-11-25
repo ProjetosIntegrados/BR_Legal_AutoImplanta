@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import Any, Optional
+from .coordenadas import ConversorCoordenadas
 
 from openpyxl import load_workbook
 
@@ -98,6 +99,16 @@ class LeitorCadastroVertical:
         # Para placas do tipo MQ, o código é reconstruído com base na kilometragem da instalação.
         if codigo_placa.startswith("MQ-"):
             codigo_placa = f"MQ-{round(km)}"
+
+        latitude=latitude,
+        longitude=longitude,
+        x=x,
+        y=y,
+
+        x, y = ConversorCoordenadas.converter(
+            latitude=latitude,
+            longitude=longitude,
+        )
 
         return Placa(
             br=str(valor("BR")),
