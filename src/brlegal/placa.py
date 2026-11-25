@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 import re
 from typing import Optional
+from math import isfinite
 
 from .catalogo_codigos import CatalogoCodigos
 from .enums import *
@@ -163,30 +164,47 @@ class Placa:
     # LOCALIZAÇÃO
     # ========================================================
 
+    
     def _validar_localizacao(self):
-        if self.km < 0:
+
+        # Quilometragem
+        if not isfinite(self.km) or self.km < 0:
             raise ErroPlaca(
-                "KM não pode ser negativo."
+                "KM deve ser um número válido e não negativo."
             )
+
+        # Latitude
+        if not isfinite(self.latitude):
+            raise ErroPlaca("Latitude deve ser um número válido.")
 
         if not -90 <= self.latitude <= 90:
             raise ErroPlaca(
                 f"Latitude inválida: {self.latitude}"
             )
 
+        # Longitude
+        if not isfinite(self.longitude):
+            raise ErroPlaca("Longitude deve ser um número válido.")
+
         if not -180 <= self.longitude <= 180:
             raise ErroPlaca(
                 f"Longitude inválida: {self.longitude}"
             )
 
+        # Coordenadas UTM
+        if not isfinite(self.x):
+            raise ErroPlaca("Coordenada X UTM inválida.")
+
+        if not isfinite(self.y):
+            raise ErroPlaca("Coordenada Y UTM inválida.")
+
+        # Detalhamento
         if self.detalhamento_pagina is not None:
-            if not isinstance(
-                self.detalhamento_pagina,
-                int
-            ):
+            if not isinstance(self.detalhamento_pagina, int):
                 raise ErroPlaca(
                     "Página deve ser um número inteiro."
                 )
+
 
     # ========================================================
     # SUPORTE
